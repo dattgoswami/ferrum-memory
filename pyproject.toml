@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ferrum-memory"
+version = "0.1.0"
+description = "Agent working memory and experience replay buffer for the Ferrum Platform"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+keywords = ["agents", "memory", "experience-replay", "llm", "continual-learning"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "pydantic>=2.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "qdrant-client>=1.9",
+    "redis[hiredis]>=5.0",
+    "fastembed>=0.3.0",
+    "aiosqlite>=0.19",
+    "opentelemetry-sdk>=1.27",
+    "opentelemetry-exporter-otlp-proto-grpc>=1.27",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "respx>=0.21",
+    "testcontainers[qdrant,redis]>=4.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["ferrum_memory", "contracts"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "--tb=short -q"
+
+[tool.coverage.run]
+source = ["contracts", "ferrum_memory"]
+branch = true
+
+[tool.coverage.run]
+source = ["contracts", "ferrum_memory"]
+omit = [
+    "ferrum_memory/storage/qdrant_store.py",
+    "ferrum_memory/storage/redis_store.py",
+    "ferrum_memory/retrieval/reranker.py",
+    "ferrum_memory/main.py",
+]
+
+[tool.coverage.report]
+fail_under = 95
+exclude_lines = [
+    "pragma: no cover",
+    "def __init__",
+    "if TYPE_CHECKING",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true

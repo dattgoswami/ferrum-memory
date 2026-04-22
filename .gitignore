@@ -1,0 +1,49 @@
+# macOS / editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Local assistant workspace
+.claude/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.so
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.tox/
+.nox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Coverage and test output
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Packaging artifacts
+build/
+dist/
+site/
+.eggs/
+*.egg-info/
+pip-wheel-metadata/
+
+# Local environment files
+.env
+.env.*
+.python-version
+
+# Local runtime data
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+plan.md
