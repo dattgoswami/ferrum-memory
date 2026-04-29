@@ -2,7 +2,7 @@
 
 Agent working memory and experience replay buffer for the Ferrum Platform.
 
-Serves [forge-agent](https://github.com/dattgoswami/forge-agent), [agent-runtime](https://github.com/dattgoswami/agent-runtime), and [ferrum-evals](https://github.com/dattgoswami/ferrum-evals). Unlike a general vector DB, ferrum-memory is a **continual learning instrument**: storing RL experience tuples (task, tool_calls, test_result, reward) and implementing prioritized experience replay (PER) for the dream cycle.
+Serves [forge-agent](https://github.com/dattgoswami/forge-agent), [agent-runtime](https://github.com/dattgoswami/ferrum-agent), and [ferrum-evals](https://github.com/dattgoswami/ferrum-evals). Unlike a general vector DB, ferrum-memory is a **continual learning instrument**: storing RL experience tuples (task, tool_calls, test_result, reward) and implementing prioritized experience replay (PER) for the dream cycle.
 
 ## Architecture
 
